@@ -28,7 +28,7 @@ namespace VitaShooter
 		{
 			Director.Initialize();
 
-			Director.Instance.GL.Context.SetClearColor( Colors.Grey20 );
+			Director.Instance.GL.Context.SetClearColor( Colors.Black );
 			Director.Instance.DebugFlags |= DebugFlags.DrawGrid;
 			
 			

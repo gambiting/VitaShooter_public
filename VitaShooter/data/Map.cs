@@ -54,7 +54,7 @@ namespace VitaShooter
 		 * */
 		public void setupLocations()
 		{
-			tileLocations.Add("wall_corner_top_left", new Vector2i(0,0));
+			/*tileLocations.Add("wall_corner_top_left", new Vector2i(0,0));
 			tileLocations.Add("wall_corner_top_right", new Vector2i(1,0));
 			tileLocations.Add("wall_corner_bottom_left", new Vector2i(2,0));
 			tileLocations.Add("wall_corner_bottom_right", new Vector2i(3,0));;
@@ -70,7 +70,14 @@ namespace VitaShooter
 			tileLocations.Add("wall_top", new Vector2i(0,3));
 			tileLocations.Add("wall_bottom", new Vector2i(1,3));
 			tileLocations.Add("wall_left", new Vector2i(3,3));
-			tileLocations.Add("wall_right", new Vector2i(2,3));
+			tileLocations.Add("wall_right", new Vector2i(2,3));*/
+			
+			//simple setup:
+			
+			tileLocations.Add("floor", new Vector2i(0,0));
+			tileLocations.Add ("wall", new Vector2i(1,0));
+			tileLocations.Add ("empty",new Vector2i(2,0));
+			tileLocations.Add("door", new Vector2i(2,0));
 		}
 		
 		public void prepareDescriptions(Map m, List<MapTile> tiles)
@@ -279,14 +286,15 @@ namespace VitaShooter
 				Console.WriteLine(mt.x + " , " + mt.y); 
 			}*/
 			
-			var texture = new TextureInfo (new Texture2D ("/Application/data/tiles/dungeon_tiles.png", false)
-													, new Vector2i (4, 4));
+			var texture = new TextureInfo (new Texture2D ("/Application/data/tiles/simple2.png", false)
+													, new Vector2i (3, 1));
 			
+			System.Console.WriteLine(texture.TileSizeInPixelsf.ToString());
 			
 			//spritelist for the map
 			SpriteList spriteList = new SpriteList( texture)
 			{ 
-				BlendMode = BlendMode.None
+				BlendMode = BlendMode.Normal
 			};
 			spriteList.EnableLocalTransform = true;
 			
@@ -310,8 +318,11 @@ namespace VitaShooter
 
 					var sprite = returnSpriteFromTile(tiles[position].type,texture);
 					
-					sprite.Scale = new Vector2(2.0f,2.0f);
-					Vector2 p = new Vector2(x*2,y*2) - (new Vector2(m.width,m.height))/2.0f;
+					;
+					
+					//sprite.Scale = new Vector2(2.0f,2.0f);
+					//sprite.Quad.S = new Vector2(2f,2);
+					Vector2 p = new Vector2(x*2.0f,y*2.0f) - (new Vector2(m.width,m.height))/2.0f;
 					sprite.Position = p;
 					spriteList.AddChild(sprite);
 					
@@ -337,7 +348,7 @@ namespace VitaShooter
 			if(!tileLocations.TryGetValue(tileName, out textureLocation))
 			{
 				//if there was no such tile in the dictionary then set the location to 0,0 as a failsafe
-				textureLocation = new Vector2i(0,0);
+				textureLocation = new Vector2i(1,0);
 			}
 			
 			

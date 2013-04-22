@@ -60,7 +60,7 @@ namespace VitaShooter
 			Scene.Camera.SetViewFromViewport();
 			Vector2 ideal_screen_size = new Vector2(960.0f, 544.0f);
 			camera = Scene.Camera as Camera2D;
-			camera.SetViewFromWidthAndCenter( 40.0f, Math._00 );
+			camera.SetViewFromWidthAndCenter( 10.0f, Math._00 );
 			
 			
 			//load the map

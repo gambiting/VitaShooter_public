@@ -62,6 +62,8 @@
       <DeployService-Deploy>true</DeployService-Deploy>
     </Content>
     <Content Include="data\tiles\dungeon_tiles.png" />
+    <Content Include="data\tiles\simple.png" />
+    <Content Include="data\tiles\simple2.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\" />
